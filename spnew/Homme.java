@@ -29,13 +29,14 @@ public class Homme extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jLabelh = new javax.swing.JLabel();
+        jLabelh1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jLabelh2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Homme");
@@ -50,8 +51,8 @@ public class Homme extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1);
         jButton1.setBounds(20, 390, 160, 40);
-        jPanel1.add(jLabelh);
-        jLabelh.setBounds(10, 50, 160, 170);
+        jPanel1.add(jLabelh1);
+        jLabelh1.setBounds(20, 30, 220, 60);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,13 +120,15 @@ public class Homme extends javax.swing.JFrame {
         jTabbedPane1.addTab("tab5", jPanel6);
 
         jPanel1.add(jTabbedPane1);
-        jTabbedPane1.setBounds(230, 30, 340, 400);
+        jTabbedPane1.setBounds(310, 30, 340, 400);
+        jPanel1.add(jLabelh2);
+        jLabelh2.setBounds(30, 100, 220, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,30 +140,7 @@ public class Homme extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         Homme h2= new Homme();
-        String message2=h2.jLabelh.getText();
-       if(message2.equals("Obésité morbide ou massive")){
-              ObesiteMassive prg1=new ObesiteMassive();
-              prg1.setVisible(true);  } 
-              else{
-                  if(message2.equals("Obésité")){
-                     Obesite prg2=new Obesite();
-                     prg2.setVisible(true);
-                } 
-                  else{ if(message2.equals("Surpoids")){ 
-                      Surpoids prg3=new Surpoids();
-                      prg3.setVisible(true);
-                 }
-                  else{ if(message2.equals("Corpulence normal")) { 
-                      Poids_Normal prg4=new Poids_Normal();
-                      prg4.setVisible(true);
-                     }
-                     else{ Maigreur pr5=new Maigreur();
-                  pr5.setVisible(true);}
-                  }
-                  } }  
-                                         
-              
+        Calcule.Regime(Calcule.imc);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -200,7 +180,8 @@ public class Homme extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    public javax.swing.JLabel jLabelh;
+    public javax.swing.JLabel jLabelh1;
+    public javax.swing.JLabel jLabelh2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

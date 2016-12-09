@@ -5,6 +5,8 @@
  */
 package spnew;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Toshiba
@@ -15,6 +17,7 @@ public class Calcule extends javax.swing.JFrame {
      * Creates new form Calcule
      */
     public Calcule() {
+      
         initComponents();
     }
 
@@ -35,10 +38,14 @@ public class Calcule extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(620, 270));
+        setMaximumSize(new java.awt.Dimension(620, 260));
+        setMinimumSize(new java.awt.Dimension(620, 260));
 
+        jPanel1.setMaximumSize(new java.awt.Dimension(620, 260));
+        jPanel1.setMinimumSize(new java.awt.Dimension(620, 260));
         jPanel1.setLayout(null);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -55,23 +62,23 @@ public class Calcule extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(160, 100, 110, 30);
+        jTextField2.setBounds(160, 110, 110, 30);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme" }));
         jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(160, 170, 120, 30);
+        jComboBox1.setBounds(160, 220, 120, 30);
 
         jLabel2.setText("Poids en kg");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 50, 80, 30);
+        jLabel2.setBounds(70, 50, 80, 30);
 
         jLabel3.setText(" Taille en m");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(40, 100, 90, 30);
+        jLabel3.setBounds(60, 110, 90, 30);
 
         jLabel4.setText("Sexe");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 170, 90, 30);
+        jLabel4.setBounds(60, 220, 90, 30);
 
         jButton4.setText("Calcule");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -80,54 +87,84 @@ public class Calcule extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(250, 263, 170, 40);
+        jButton4.setBounds(350, 320, 170, 40);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/wrap-minceur-perte-de-poids_1.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(0, 0, 620, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public float imc;
+    public static float imc;
 //methode calcule IMC 
-    float CalculImc(float poids, float taille){
-        return poids/(taille*taille); }
+    float CalculImc(float poids, float taille) {
+       return poids/(taille*taille); }
+    // methode affiche la fenétre du régime selon l'Imc
+     public  static void Regime(float imc){
+            if(imc>40){ 
+              ObesiteMassive prg1=new ObesiteMassive();
+              prg1.setVisible(true); }
+       else{ if(imc>=30){  Obesite prg2=new Obesite();
+                           prg2.setVisible(true);      }
+        else{ if(imc>=25){      Surpoids prg3=new Surpoids();
+                              prg3.setVisible(true);       }
+       else{ if(imc>=18) {   Poids_Normal prg4=new Poids_Normal();
+                                  prg4.setVisible(true);         }
+       else{ Maigreur pr5=new Maigreur();
+                pr5.setVisible(true);  }
+                  } } }  
+        
+  }
+ //methode Afficher message selon Imc
+     String message1,message2; 
+     public void TypeImc(float imc){
+       if(imc>40){ message1="Obésité morbide ou massive"; 
+      message2="regime et activité sportives conseillés pendant 100 jours ";
+       }  else{
+                  if(imc>=30){message1="Obésité" ;
+                  message2="regime et activité sportives conseillés pendant 70 jours";}
+                  else{ if(imc>=25){ message1="Surpoids";
+                  message2="regime et activité sportives conseillés pendant 50 jours";}
+                  else{ if(imc>=18) { message1="Corpulence normal"; }
+                     else{ message1="Maigreur";
+                     message2="Aliments conseillé pour éviter la perte de poids exsessive";
+                  }
+                  } } }  }
+ 
   
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
          float p=Float.valueOf(jTextField1.getText());
            float t=Float.valueOf(jTextField2.getText());
-           p=
-          imc =CalculImc(p,t);
-           String m=""; String m2="";
-           if(imc>40){ m="Obésité morbide ou massive"; 
-        //  m2="vous devez refaire ces exo pendant 70 jours"; //} 
-           }
-              else{
-                  if(imc>=30){m="Obésité" ;}
-                  else{ if(imc>=25){ m="Surpoids"; }
-                  else{ if(imc>=18) { m="Corpulence normal"; }
-                     else{ m="Maigreur"; }
-                  } } }  
+      
+       imc =CalculImc(p,t);
+  
+        TypeImc(imc);
+   
      if (jComboBox1.getModel().getSelectedItem().equals("Femme")){ //ouvrir fenétre Femme
                  Femme f1=new Femme();
-                 f1.jLabelf1.setText(m);
-               //  f1.jLabelf2.setText(m2);
+                f1.jLabelf1.setText(message1);
+                f1.jLabelf2.setText(message2);
                  f1.setVisible(true);
              } else {  Homme h1=new Homme(); // ouvrir fenétre Homme
-             h1.jLabelh.setText(m);
+             h1.jLabelh1.setText(message1);
+              h1.jLabelh2.setText(message2);
              h1.setVisible(true);
      }
+    
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -179,6 +216,7 @@ public class Calcule extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;
